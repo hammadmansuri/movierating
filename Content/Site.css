@@ -1,0 +1,63 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+/*input,*/
+select,
+textarea {
+    max-width: 280px;
+}
+
+ui-view {
+    width: 100%;
+}
+
+label {
+    font-weight: normal;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.activeItem {
+    background-color: #efefef;
+}
+
+.my-table {
+    width: 98%;
+    margin: 8px;
+}
+
+    .my-table thead tr td {
+        padding: 8px;
+    }
+
+    .my-table tr:not(:first-child) {
+        border-bottom: 1px solid #dedede;
+    }
+
+        .my-table tr:not(:first-child) td:first-child,
+        .my-table tr:not(:first-child) td:last-child {
+            text-align: center;
+        }
+    .my-table tr:first-child td{
+        font-weight:600;
+        background-color:#efefef;
+        padding:8px;
+    }
+.avatar-img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 16px;
+    margin-top: 5px;
+}
