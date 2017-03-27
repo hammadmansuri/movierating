@@ -10,45 +10,43 @@
 </head>
 
 <body ng-controller="mainController">
-    <md-content>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h3>Movie Rating</h3>
-            </div>
-        </md-toolbar>
-        <div layout="row" layout-margin="20">
-            <span flex></span>
-            <!--<i class="material-icons">search</i>-->
-            <md-input-container flex="40" class="md-icon-float md-block">
-                <input type="text" ng-model="searchMovie" placeholder="Search movie" />
-            </md-input-container>
-            <md-input-container>
-                <md-select ng-model="sortOption" placeholder="Sort">
-                    <md-option ng-value="sort.mappingValue" ng-repeat="sort in sortOptions">
-                        {{sort.displayValue}}
-                    </md-option>
-                </md-select>
-            </md-input-container>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h3>Movie Rating</h3>
         </div>
-        <div layout="row" layout-sm="column" layout-xs="column">
-            <div flex>
-                <md-card ng-repeat="movie in movies | filter:searchMovie | orderBy: sortOption" class="md-whiteframe-3dp" ng-class="{'md-whiteframe-6dp': cardOnHover}"
-                    ng-mouseenter="cardOnHover=true" ng-mouseleave="cardOnHover=false" layout-align="center center">
-                    <img ng-src="{{movie.image}}" class="md-card-image" style="width:200px" />
-                    <md-card-title>
-                        <md-card-title-text>
-                            <span class="md-headline">{{movie.title}}</span>
-                            <span>{{movie.releaseDate | date:'short'}}</span>
-                            <small>Rating: {{movie.rating == 0 || isUpcoming($index) ? 'Not Rated' : movie.rating}} </small>
-                            <div star-rating-component ng-model="movie.rating" readonly="isUpcoming($index)" on-rating-select="updateChart(movie.rating)"></div>
-                    </md-card-title>
-                </md-card>
-            </div>
-            <div flex="50">
-                <div id="movieChart">
-            </div>
+    </md-toolbar>
+    <div layout="row" layout-margin="20">
+        <div flex="50">
+            <div id="movieChart"></div>
         </div>
-    </md-content>
+
+        <!--<i class="material-icons">search</i>-->
+        <md-input-container flex="40" class="md-icon-float md-block">
+            <input type="text" ng-model="searchMovie" placeholder="Search movie" />
+        </md-input-container>
+        <md-input-container>
+            <md-select ng-model="sortOption" placeholder="Sort">
+                <md-option ng-value="sort.mappingValue" ng-repeat="sort in sortOptions">
+                    {{sort.displayValue}}
+                </md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+
+    <div layout="row" layout-sm="column" layout-xs="column">
+            <md-card flex="100" ng-repeat="movie in movies | filter:searchMovie | orderBy: sortOption" class="md-whiteframe-3dp" ng-class="{'md-whiteframe-6dp': cardOnHover}"
+                ng-mouseenter="cardOnHover=true" ng-mouseleave="cardOnHover=false" layout-align="center center">
+                <img ng-src="{{movie.image}}" class="md-card-image" style="width:200px" />
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{movie.title}}</span>
+                        <span>{{movie.releaseDate | date:'short'}}</span>
+                        <small>Rating: {{movie.rating == 0 || isUpcoming($index) ? 'Not Rated' : movie.rating}} </small>
+                        <div star-rating-component ng-model="movie.rating" readonly="isUpcoming($index)" on-rating-select="updateChart(movie.rating)"></div>
+                </md-card-title>
+            </md-card>
+        
+    </div>
 </body>
 
 </html>
@@ -62,3 +60,4 @@
 
 <script type="text/javascript" src="Scripts/app.js"></script>
 <script type="text/javascript" src="Scripts/mainController.js"></script>
+<script type="text/javascript" src="Scripts/star-rating-directive.js"></script>

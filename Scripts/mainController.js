@@ -40,9 +40,9 @@ movieRatingApp.controller('mainController', ['$scope', '$http', '$mdToast', func
     }
     function drawChart() {
         var data = new google.visualization.DataTable();
-        data.addColumn('number', 'Star');
         data.addColumn('number', 'Count');
-        
+        data.addColumn('number', 'Star');
+
         var maxStar = 5;
         var movieCount = [];
 
@@ -53,8 +53,8 @@ movieRatingApp.controller('mainController', ['$scope', '$http', '$mdToast', func
         // [8, 4],
         // [12, 5]];
 
-        var count = [1, 1, 1, 1, 1];
-        var rating = [1, 2, 3, 4, 5];
+        var count = [0, 3, 0, 6, 0, 1];
+        var rating = [0, 1, 2, 3, 4, 5];
         for (var i = 0; i < $scope.movies.length; i++) {
 
             // switch (parseInt($scope.movies[i].rating)) {
@@ -78,16 +78,18 @@ movieRatingApp.controller('mainController', ['$scope', '$http', '$mdToast', func
             //         break;
             // }
             //if (movieCount.indexOf(parseInt($scope.movies[i].rating)) == -1)
-                movieCount.push(parseInt($scope.movies[i].rating));
+            movieCount.push(parseInt($scope.movies[i].rating));
             //     (movieCount[i])++
             // else
             //movieCount.push(parseInt($scope.movies[i].rating));
             //movieCount.indexOf($scope.movies[i].rating) == -1 ? movieCount.push($scope.movies[i].rating) : '';
         }
 
-        data.addRows([
-            rating, count
-        ]);
+        for (var k = 0; k < count.length; k++) {
+            data.addRow([
+                count[k], rating[k]
+            ]);
+        }
         // Instantiate and draw the chart.
         var chart = new google.visualization.BarChart(document.getElementById('movieChart'));
         chart.draw(data, null);

@@ -5,16 +5,14 @@
 }
 .star-rating .star {
   padding: 1px;
-  color: #888;
+  color: rgb(63,81,181);
   font-size: 20px;
   text-shadow: .05em .05em #aaa;
   list-style-type: none;
   display: inline-block;
   cursor: pointer;
 }
-.star-rating .star.filled {
-  color: #fd0;
-}
-.readonlyClass  {
-  color: #efefef;
+
+.readonlyClass .star {
+  color: #333;
 }
